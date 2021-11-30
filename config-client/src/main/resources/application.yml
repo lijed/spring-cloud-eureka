@@ -1,6 +1,6 @@
 server:
 #  port: 0  # 随机端口
-  port: 8084  # 指定端口
+  port: 8082  # 指定端口
 
 test:
   values: 1,2
@@ -32,6 +32,7 @@ spring:
       discovery:
         prefer-ip-address: true
         register: true
+        health-check-path: /actuator/health
 
 ---  # profile for zookkeeper
 spring:
