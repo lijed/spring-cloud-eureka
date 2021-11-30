@@ -281,7 +281,7 @@ spring:
 
 
 
-![image-20211130141053522](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20211130141053522.png)
+![image-20211130141053522](.\images\image-20211130141053522.png)
 
 # Consul
 
