@@ -1,0 +1,41 @@
+{
+  "name": "config-client",
+  "id": "a0a4127e-3fa9-4ad4-a65e-812d733cde3f",
+  "address": "TJ-JedL.ariix.inc",
+  "port": 8082,
+  "sslPort": null,
+  "payload": {
+    "@class": "org.springframework.cloud.zookeeper.discovery.ZookeeperInstance",
+    "id": "application-1",
+    "name": "config-client",
+    "metadata": {
+      "instance_status": "UP"
+    }
+  },
+  "registrationTimeUTC": 1637724703867,
+  "serviceType": "DYNAMIC",
+  "uriSpec": {
+    "parts": [
+      {
+        "value": "scheme",
+        "variable": true
+      },
+      {
+        "value": "://",
+        "variable": false
+      },
+      {
+        "value": "address",
+        "variable": true
+      },
+      {
+        "value": ":",
+        "variable": false
+      },
+      {
+        "value": "port",
+        "variable": true
+      }
+    ]
+  }
+}

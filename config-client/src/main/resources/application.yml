@@ -1,0 +1,78 @@
+server:
+#  port: 0  # 随机端口
+  port: 8084  # 指定端口
+
+test:
+  values: 1,2
+
+spring:
+ application:
+  name: config-client
+ cloud:
+   zookeeper:
+     discovery:
+       enabled: false
+   consul:
+     enabled: false
+     discovery:
+       register: false
+
+eureka:
+  client:
+    enabled: false
+
+---
+spring:
+  profiles: consul
+  cloud:
+    consul:
+      enabled: true
+      port: 8500
+      host: 127.0.0.1
+      discovery:
+        prefer-ip-address: true
+        register: true
+
+---  # profile for zookkeeper
+spring:
+  profiles: zookeeper
+  cloud:
+    zookeeper:
+      discovery:
+        enabled: true
+      connect-string: 127.0.0.1:2181
+--- # profile for eureka
+spring:
+  profiles: eureka
+#
+eureka:
+  servers:
+    server1:
+      host: peer1   # 自定义配置，非eureka内部配置
+      port: 8671   # 自定义配置，非eureka内部配置
+    server2:
+      host: peer2 # 自定义配置，非eureka内部配置
+      port: 8672  # 自定义配置，非eureka内部配置
+
+  instance:
+    hostname: peer1  # 配置中心
+    instance-id: ${spring.application.name}-${server.port}  #服务实例在注册中心的名字
+    prefer-ip-address: true
+
+  client:
+    service-url:
+      defaultZone: http://${eureka.servers.server1.host}:${eureka.servers.server1.port}/eureka/  #,http://${eureka.servers.server2.host}:${eureka.servers.server2.port}/eureka/
+    enabled: true
+---
+
+# springboot actuator
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"
+    jmx:
+      exposure:
+        include: "*"
+
